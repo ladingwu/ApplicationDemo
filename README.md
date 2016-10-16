@@ -8,7 +8,7 @@
 - Filter
 - Interval
 - Merge
-- Schuders
+- Schedulers
 - take
 - toSortedList
 - rxbinding (在 Android 平台上的基于 RxJava 的 Binding API)

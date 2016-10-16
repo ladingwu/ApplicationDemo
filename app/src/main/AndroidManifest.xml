@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lading.applicationdemo">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NormalRxActivity"></activity>
+        <activity android:name=".RxMapActivity"></activity>
+        <activity android:name=".RxSchuderActivity"></activity>
+        <activity android:name=".RxFlatMapActivity"></activity>
+        <activity android:name=".RxMergeActivity"></activity>
+        <activity android:name=".RxBindingActivity"></activity>
+        <activity android:name=".RxFilterActivity"></activity>
+        <activity android:name=".RxTakeActivity"></activity>
+        <activity android:name=".MainActivity9"></activity>
+        <activity android:name=".MainActivity10"></activity>
+
+    </application>
+
+</manifest>

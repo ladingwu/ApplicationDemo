@@ -13,4 +13,9 @@
 - toSortedList
 - rxbinding (在 Android 平台上的基于 RxJava 的 Binding API)
 
+更新
+
+- 类名修改
+- 添加Observable的连接操作符
+
 后面会陆续加入更多操作符的使用范例，欢迎大家follow或star

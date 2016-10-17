@@ -4,30 +4,28 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
-public class MainActivity10 extends AppCompatActivity implements View.OnClickListener{
+public class RxTimerActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView mText;
     private Button mBtn;
     private Button mBtnCancal;
     private TextView mEdit;
     private Subscription mSubscription=null;
-    private Integer [] words={1,3,5,2,34,7,5,86,23,43};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout1);
+        setContentView(R.layout.layout2);
         initView();
     }
 
@@ -35,13 +33,12 @@ public class MainActivity10 extends AppCompatActivity implements View.OnClickLis
         mText= (TextView) findViewById(R.id.text1);
         mEdit= (TextView) findViewById(R.id.edit1);
         mBtn= (Button) findViewById(R.id.button);
-        mBtn.setText("开始排序");
-//        mBtnCancal= (Button) findViewById(R.id.button_cancal);
-        mEdit.setText("为给定数据列表排序：1,3,5,2,34,7,5,86,23,43   \n\ntoSortedList() :为事件中的数据排序" );
+        mBtnCancal= (Button) findViewById(R.id.button_cancal);
+        mEdit.setText("定时器，每一秒发送打印一个数字   \n\ninterval(1, TimeUnit.SECONDS)  创建一个每隔一秒发送一次事件的对象");
         mBtn.setOnClickListener(this);
         mText.setOnClickListener(this);
         mEdit.setOnClickListener(this);
-//        mBtnCancal.setOnClickListener(this);
+        mBtnCancal.setOnClickListener(this);
     }
 
     @Override
@@ -54,24 +51,23 @@ public class MainActivity10 extends AppCompatActivity implements View.OnClickLis
             case R.id.button:
                 start();
                 break;
-
+            case R.id.button_cancal:
+                    //取消订阅
+                     if (mSubscription!=null && !mSubscription.isUnsubscribed()){
+                         mSubscription.unsubscribe();
+                     }
+                    break;
         }
     }
 
     private void start() {
-        //
-        Observable.from(words)
-                  .toSortedList()
-                   .flatMap(new Func1<List<Integer>, Observable<Integer>>() {
-                       @Override
-                       public Observable<Integer> call(List<Integer> strings) {
-                           return Observable.from(strings);
-                       }
-                   })
-                  .subscribe(new Action1<Integer>() {
+        //interval（）是运行在computation Scheduler线程中的，因此需要转到主线程
+        mSubscription=Observable.interval(1, TimeUnit.SECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                  .subscribe(new Action1<Long>() {
                       @Override
-                      public void call(Integer strings) {
-                          mText.append(strings+"\n");
+                      public void call(Long aLong) {
+                          mText.setText(aLong+"");
                       }
                   });
     }

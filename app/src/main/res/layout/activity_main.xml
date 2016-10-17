@@ -79,7 +79,7 @@
         android:id="@+id/button11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="可连接的Observable的用法"
+        android:text="操作符--connect"
         />
 
 </LinearLayout>

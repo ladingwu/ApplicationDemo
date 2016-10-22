@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button11:intent=new Intent(MainActivity.this,RxConnetActivity.class);
                 break;
-            case R.id.button12:intent=new Intent(MainActivity.this,TimeestampActivity.class);
+            case R.id.button12:intent=new Intent(MainActivity.this,TimestampActivity.class);
                 break;
         }
         startActivity(intent);

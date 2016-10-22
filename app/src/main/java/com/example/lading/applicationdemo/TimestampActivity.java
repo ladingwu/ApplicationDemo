@@ -14,9 +14,10 @@ import rx.Observable;
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 import rx.schedulers.Timestamped;
 
-public class TimeestampActivity extends AppCompatActivity implements View.OnClickListener{
+public class TimestampActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView mText;
     private Button mBtn;
@@ -77,10 +78,11 @@ public class TimeestampActivity extends AppCompatActivity implements View.OnClic
 //                  });
         Observable.from(words)
                 .timestamp()
+//                .timestamp(Schedulers.io()) 可指定线程环境，如果指定到子线程，请在最后切换成主线程
                 .subscribe(new Action1<Timestamped<Integer>>() {
                     @Override
                     public void call(Timestamped<Integer> integerTimestamped) {
-                        
+
                         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
                         mText.append("value: "+integerTimestamped.getValue()+"       time:   ");
                         mText.append(sdf.format(new Date(integerTimestamped.getTimestampMillis()))+"\n");

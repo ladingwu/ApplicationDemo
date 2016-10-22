@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button9).setOnClickListener(this);
         findViewById(R.id.button10).setOnClickListener(this);
         findViewById(R.id.button11).setOnClickListener(this);
+        findViewById(R.id.button12).setOnClickListener(this);
 //        mBtn1= (Button) findViewById(R.id.button);
 //        mBtn1= (Button) findViewById(R.id.button);
 //        mBtn1= (Button) findViewById(R.id.button);
@@ -74,7 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button11:intent=new Intent(MainActivity.this,RxConnetActivity.class);
                 break;
-
+            case R.id.button12:intent=new Intent(MainActivity.this,TimeestampActivity.class);
+                break;
         }
         startActivity(intent);
     }

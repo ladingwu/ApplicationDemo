@@ -26,6 +26,7 @@
         <activity android:name=".RxTimerActivity"></activity>
         <activity android:name=".RxSortActivity"></activity>
         <activity android:name=".RxConnetActivity"></activity>
+        <activity android:name=".TimeestampActivity"></activity>
 
     </application>
 

@@ -81,6 +81,12 @@
         android:layout_height="wrap_content"
         android:text="操作符--connect"
         />
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="操作符--"
+        />
 
 </LinearLayout>
 </ScrollView>
